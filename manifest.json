@@ -1,0 +1,23 @@
+{
+ "package": "Gritit",
+ "language": "python",
+ "author": "whitecapsO",
+ "description": "Generic Farmware function to run sequences on a grid",
+ "version": "1.0.0",
+ "min_os_version_major": 6,
+ "url": "https://raw.githubusercontent.com/whitecapsO/Gritit/master/manifest.json",
+ "zip": "https://github.com/whitecapsO/Gritit/archive/master.zip",
+ "executable": "python",
+ "args": ["Gritit-master/main.py"],
+ "config": [
+ {"name": "rows", "label": "Number of rows (0-20):", "value": "0"},
+ {"name": "cols", "label": "Number of columns (0-20):", "value": "0"},
+ {"name": "spaceBetweenRows", "label": "The number of millimeters between each row to move the x axis:", "value": "1"},
+ {"name": "spaceBetweenColumns", "label": "The number of millimeters between each column to move the y axis:", "value": "1"},
+ {"name": "startX", "label": "Where to start the x axis from:", "value": "0"},
+ {"name": "startY", "label": "Where to start the y axis from:", "value": "0"},
+ {"name": "startZ", "label": "Where to start the z axis from:", "value": "0"},
+ {"name": "sequenceBeforeMove", "label": "Sequence to call before moving to the next cell:", "value": ""},
+ {"name": "sequenceAfterMove", "label": "Sequence to call after moving to the next cell:", "value": ""}
+ ]
+}
