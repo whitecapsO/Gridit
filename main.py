@@ -1,5 +1,3 @@
-# TODO change repository name from Farmware to gridit
-
 from Farmware import *
 
 APP_NAME = ((__file__.split(os.sep))[len(__file__.split(os.sep)) - 3]).replace('-master', '')
@@ -78,7 +76,9 @@ class gridit(Farmware):
 # ----------------------------------------------------------------------------------------------------------------------
 
 
+import pdb; pdb.set_trace()  # breakpoint a6086ea4 //
 if __name__ == "__main__":
+    import pdb; pdb.set_trace()  # breakpoint a8af34f6 //
     app = gridit()
     try:
         app.load_config()
