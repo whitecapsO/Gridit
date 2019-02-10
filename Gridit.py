@@ -1,24 +1,24 @@
 from farmware_tools import *
 
 
-def runSequence(sequenceName):
-    sequence_id = app.find_sequence_by_name('name=' + sequenceName)
-    device.execute(sequence_id)
+# def runSequence(sequenceName):
+#     sequence_id = app.find_sequence_by_name('name=' + sequenceName)
+#     device.execute(sequence_id)
 
 
-def moveAbsolute(x, y, z):
-    device.log('Moving to ' + str(x) + ', ' + str(y) + ', ' + str(z), 'success', ['toast'])
-    device.move_absolute(
-        {
-            'kind': 'coordinate',
-            'args': {'x': x, 'y': y, 'z': z}
-        },
-        100,
-        {
-            'kind': 'coordinate',
-            'args': {'x': 0, 'y': 0, 'z': 0}
-        }
-    )
+# def moveAbsolute(x, y, z):
+#     device.log('Moving to ' + str(x) + ', ' + str(y) + ', ' + str(z), 'success', ['toast'])
+#     device.move_absolute(
+#         {
+#             'kind': 'coordinate',
+#             'args': {'x': x, 'y': y, 'z': z}
+#         },
+#         100,
+#         {
+#             'kind': 'coordinate',
+#             'args': {'x': 0, 'y': 0, 'z': 0}
+#         }
+#     )
 
 
 rows = 4
@@ -40,16 +40,33 @@ for r in range(rows):
     # Set y position back to the begining of the row
     yPos = startY
 
+    zPos = startZ
+
     for c in range(cols):
         # Run the before move sequence
         if sequenceBeforeMove != "":
-            runSequence(sequenceBeforeMove)
-            moveAbsolute(xPos, yPos, startZ)
+            # runSequence(sequenceBeforeMove)
+            sequence_id = app.find_sequence_by_name('name=' + sequenceBeforeMove)
+            device.execute(sequence_id)
+            # moveAbsolute(xPos, yPos, startZ)
+            device.log('Moving to ' + str(xPos) + ', ' + str(yPos) + ', ' + str(zPos), 'success', ['toast'])
+            device.move_absolute(
+            {
+                'kind': 'coordinate',
+                'args': {'x': xPos, 'y': yPos, 'z': zPos}
+            },
+            100,
+            {
+                'kind': 'coordinate',
+                'args': {'x': 0, 'y': 0, 'z': 0}
+            }
+        )
 
         # Run after move sequence
         if sequenceAfterMove != "":
-            runSequence(sequenceAfterMove)
+            # runSequence(sequenceAfterMove)
+            sequence_id = app.find_sequence_by_name('name=' + sequenceAfterMove)
+            device.execute(sequence_id)
 
         # Increment y position
         yPos = yPos + spaceBetweenColumns
-
