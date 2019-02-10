@@ -1,14 +1,14 @@
 {
- "package": "Gritit",
+ "package": "Gridit",
  "language": "python",
  "author": "whitecapsO",
  "description": "Generic Farmware function to run sequences on a grid",
  "version": "1.0.0",
  "min_os_version_major": 6,
- "url": "https://raw.githubusercontent.com/whitecapsO/Gritit/master/manifest.json",
- "zip": "https://github.com/whitecapsO/Gritit/archive/master.zip",
+ "url": "https://raw.githubusercontent.com/whitecapsO/Gridit/master/manifest.json",
+ "zip": "https://github.com/whitecapsO/Gridit/archive/master.zip",
  "executable": "python",
- "args": ["Gritit-master/main.py"],
+ "args": ["Gridit-master/main.py"],
  "config": [
  {"name": "rows", "label": "Number of rows (0-20):", "value": "0"},
  {"name": "cols", "label": "Number of columns (0-20):", "value": "0"},
