@@ -13,7 +13,7 @@
  {"name": "rows", "label": "Number of rows (0-20):", "value": "0"},
  {"name": "cols", "label": "Number of columns (0-20):", "value": "0"},
  {"name": "spaceBetweenRows", "label": "The number of millimeters between each row to move the x axis:", "value": "1"},
- {"name": "spaceBetweenColumns", "label": "The number of millimeters between each column to move the y axis:", "value": "1"},
+ {"name": "spaceBetweenCols", "label": "The number of millimeters between each column to move the y axis:", "value": "1"},
  {"name": "startX", "label": "Where to start the x axis from:", "value": "0"},
  {"name": "startY", "label": "Where to start the y axis from:", "value": "0"},
  {"name": "startZ", "label": "Where to start the z axis from:", "value": "0"},

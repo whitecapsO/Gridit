@@ -1,69 +1,47 @@
-from farmware_tools import app, device
+from farmware_tools import app, device, get_config_value
 
-device.log(message='Hello Farmware!', message_type='success')
-
-# def runSequence(sequenceName):
-#     sequence_id = app.find_sequence_by_name('name=' + sequenceName)
-#     device.execute(sequence_id)
-
-
-# def moveAbsolute(x, y, z):
-#     device.log('Moving to ' + str(x) + ', ' + str(y) + ', ' + str(z), 'success', ['toast'])
-#     device.move_absolute(
-#         {
-#             'kind': 'coordinate',
-#             'args': {'x': x, 'y': y, 'z': z}
-#         },
-#         100,
-#         {
-#             'kind': 'coordinate',
-#             'args': {'x': 0, 'y': 0, 'z': 0}
-#         }
-#     )
+# Values for testing
+# rows = 4
+# cols = 7
+# spaceBetweenRows = 47
+# spaceBetweenColumns = 45 
+# startX = 310.2
+# startY = 563.8
+# startZ = 210.96
+# sequenceBeforeMove = 'PickUpSeed' 
+# sequenceAfterMove = 'PlantSeed'
 
 device.log(message='Setting variables', message_type='success')
-
-rows = 4
-cols = 7
-spaceBetweenRows = 47
-spaceBetweenColumns = 45
-startX = 310.2
-startY = 563.8
-startZ = 210.96
-sequenceBeforeMove = 'PickUpSeed'
-sequenceAfterMove = 'PlantSeed'
-
+rows = get_config_value(farmware_name='Gridit', config_name='rows', value_type=int)
+cols = get_config_value(farmware_name='Gridit', config_name='cols', value_type=int)
+spaceBetweenRows = get_config_value(farmware_name='Gridit', config_name='spaceBetweenRows', value_type=float)
+spaceBetweenCols = get_config_value(farmware_name='Gridit', config_name='spaceBetweenCols', value_type=float)
+startX = get_config_value(farmware_name='Gridit', config_name='startX', value_type=float)
+startY = get_config_value(farmware_name='Gridit', config_name='startY', value_type=float)
+startZ = get_config_value(farmware_name='Gridit', config_name='startZ', value_type=float)
+sequenceBeforeMove = get_config_value(farmware_name='Gridit', config_name='sequenceBeforeMove', value_type=str)
+sequenceAfterMove = get_config_value(farmware_name='Gridit', config_name='sequenceAfterMove', value_type=str)
+device.log(message='Setting sequenceId variables', message_type='success')
+sequenceBeforeMoveId = app.find_sequence_by_name(name=sequenceBeforeMove)
+sequenceAfterMoveId = app.find_sequence_by_name(name=sequenceAfterMove)
 device.log(message='Starting row loop', message_type='success')
-
-# sequence_id = app.find_sequence_by_name(name='PickUpSeed')
-# device.execute(sequence_id)
 
 # Start the grid movement
 for r in range(rows):
-
-    # Initialise or increment x position
+    # Initialise or increment x, z position
     xPos = startX + (spaceBetweenRows * r)
+    zPos = startZ
 
     # Set y position back to the begining of the row
     yPos = startY
-
-    zPos = startZ
 
     device.log(message='Set positions', message_type='success')
 
     for c in range(cols):
         # Run the before move sequence
         if sequenceBeforeMove != "":
-            # runSequence(sequenceBeforeMove)
-            try:
-                device.log(message='Find sequence by name: ' + sequenceBeforeMove, message_type='success')
-                sequence_id = app.find_sequence_by_name(name=sequenceBeforeMove)
-                device.log(message='Execute sequence: ' + sequenceBeforeMove, message_type='success')
-                device.execute(sequence_id)
-                pass
-            except Exception as e:
-                device.log(message=e.message, message_type='success')
-                raise e
+            device.log(message='Execute sequence: ' + sequenceBeforeMove, message_type='success')
+            device.execute(sequenceBeforeMoveId)
 
         # moveAbsolute(xPos, yPos, startZ)
         device.log('Moving to ' + str(xPos) + ', ' + str(yPos) + ', ' + str(zPos), 'success', ['toast'])
@@ -82,10 +60,8 @@ for r in range(rows):
         # Run after move sequence
         if sequenceAfterMove != "":
             # runSequence(sequenceAfterMove)
-            device.log(message='Find sequence by name: ' + sequenceAfterMove, message_type='success')
-            sequence_id = app.find_sequence_by_name(name=sequenceAfterMove)
             device.log(message='Execute sequence: ' + sequenceAfterMove, message_type='success')
-            device.execute(sequence_id)
+            device.execute(sequenceAfterMoveId)
 
         # Increment y position
-        yPos = yPos + spaceBetweenColumns
+        yPos = yPos + spaceBetweenCols
