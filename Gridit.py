@@ -1,4 +1,4 @@
-from farmware_tools import app, device, env
+from farmware_tools import *
 
 device.log(message='Hello Farmware!', message_type='success')
 
