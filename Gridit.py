@@ -31,8 +31,8 @@ spaceBetweenColumns = 45
 startX = 310.2
 startY = 563.8
 startZ = 210.96
-sequenceBeforeMove = 'PICKUPSEED'
-sequenceAfterMove = 'PLANTSEED'
+sequenceBeforeMove = 'PickUpSeed'
+sequenceAfterMove = 'PlantSeed'
 
 device.log(message='Starting row loop', message_type='success')
 
