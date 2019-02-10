@@ -30,7 +30,7 @@ spaceBetweenRows = 47
 spaceBetweenColumns = 45
 startX = 310.2
 startY = 563.8
-startZ = 200.96
+startZ = 210.96
 sequenceBeforeMove = ''
 sequenceAfterMove = ''
 
