@@ -8,7 +8,7 @@
  "url": "https://raw.githubusercontent.com/whitecapsO/Gridit/master/manifest.json",
  "zip": "https://github.com/whitecapsO/Gridit/archive/master.zip",
  "executable": "python",
- "args": ["Gridit-master/main.py"],
+ "args": ["Gridit-master/Gridit.py"],
  "config": [
  {"name": "rows", "label": "Number of rows (0-20):", "value": "0"},
  {"name": "cols", "label": "Number of columns (0-20):", "value": "0"},
