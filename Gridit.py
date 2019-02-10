@@ -1,6 +1,19 @@
-from farmware_tools import device, app
+from farmware_tools import *
 
 device.log(message='Hello Farmware!', message_type='success')
+
+sequenceBeforeMove = 'PickUpSeed'
+sequenceAfterMove = 'PlantSeed'
+
+try:
+    device.log(message='Find sequence by name: ' + sequenceBeforeMove, message_type='success')
+    sequence_id = app.find_sequence_by_name('name=' + sequenceBeforeMove)
+    device.log(message='Execute sequence: ' + sequenceBeforeMove, message_type='success')
+    device.execute(sequence_id)
+    pass
+except Exception as e:
+    device.log(message=e.message, message_type='success')
+    raise e
 
 
 # def runSequence(sequenceName):
