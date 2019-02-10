@@ -1,4 +1,4 @@
-from farmware_tools import device
+from farmware_tools import device, app
 
 device.log(message='Hello Farmware!', message_type='success')
 
@@ -22,6 +22,7 @@ device.log(message='Hello Farmware!', message_type='success')
 #         }
 #     )
 
+device.log(message='Setting variables', message_type='success')
 
 rows = 4
 cols = 7
@@ -32,6 +33,8 @@ startY = 563.8
 startZ = 200.96
 sequenceBeforeMove = ''
 sequenceAfterMove = ''
+
+device.log(message='Starting row loop', message_type='success')
 
 # Start the grid movement
 for r in range(rows):
@@ -44,15 +47,18 @@ for r in range(rows):
 
     zPos = startZ
 
+    device.log(message='Set positions', message_type='success')
+
     for c in range(cols):
         # Run the before move sequence
         if sequenceBeforeMove != "":
             # runSequence(sequenceBeforeMove)
             sequence_id = app.find_sequence_by_name('name=' + sequenceBeforeMove)
             device.execute(sequence_id)
-            # moveAbsolute(xPos, yPos, startZ)
-            device.log('Moving to ' + str(xPos) + ', ' + str(yPos) + ', ' + str(zPos), 'success', ['toast'])
-            device.move_absolute(
+
+        # moveAbsolute(xPos, yPos, startZ)
+        device.log('Moving to ' + str(xPos) + ', ' + str(yPos) + ', ' + str(zPos), 'success', ['toast'])
+        device.move_absolute(
             {
                 'kind': 'coordinate',
                 'args': {'x': xPos, 'y': yPos, 'z': zPos}
