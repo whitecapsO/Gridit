@@ -53,8 +53,13 @@ for r in range(rows):
         # Run the before move sequence
         if sequenceBeforeMove != "":
             # runSequence(sequenceBeforeMove)
-            device.log(message='Find sequence by name: ' + sequenceBeforeMove, message_type='success')
-            sequence_id = app.find_sequence_by_name('name=' + sequenceBeforeMove)
+            try:
+                device.log(message='Find sequence by name: ' + sequenceBeforeMove, message_type='success')
+                sequence_id = app.find_sequence_by_name('name=' + sequenceBeforeMove)
+                pass
+            except Exception as e:
+                device.log(message=e.message, message_type='success')
+                raise e
             device.log(message='Execute sequence: ' + sequenceBeforeMove, message_type='success')
             device.execute(sequence_id)
 
