@@ -2,12 +2,6 @@ from farmware_tools import app, device
 
 device.log(message='Hello Farmware!', message_type='success')
 
-# Retrieve Sequence ID
-sequence_id = app.find_sequence_by_name(name='PickUpSeed')
-
-# Run Sequence
-device.execute(sequence_id)
-
 # def runSequence(sequenceName):
 #     sequence_id = app.find_sequence_by_name('name=' + sequenceName)
 #     device.execute(sequence_id)
@@ -41,6 +35,9 @@ sequenceAfterMove = 'PlantSeed'
 
 device.log(message='Starting row loop', message_type='success')
 
+# sequence_id = app.find_sequence_by_name(name='PickUpSeed')
+# device.execute(sequence_id)
+
 # Start the grid movement
 for r in range(rows):
 
@@ -60,7 +57,7 @@ for r in range(rows):
             # runSequence(sequenceBeforeMove)
             try:
                 device.log(message='Find sequence by name: ' + sequenceBeforeMove, message_type='success')
-                sequence_id = app.find_sequence_by_name('name=' + sequenceBeforeMove)
+                sequence_id = app.find_sequence_by_name(name=sequenceBeforeMove)
                 device.log(message='Execute sequence: ' + sequenceBeforeMove, message_type='success')
                 device.execute(sequence_id)
                 pass
@@ -86,7 +83,7 @@ for r in range(rows):
         if sequenceAfterMove != "":
             # runSequence(sequenceAfterMove)
             device.log(message='Find sequence by name: ' + sequenceAfterMove, message_type='success')
-            sequence_id = app.find_sequence_by_name('name=' + sequenceAfterMove)
+            sequence_id = app.find_sequence_by_name(name=sequenceAfterMove)
             device.log(message='Execute sequence: ' + sequenceAfterMove, message_type='success')
             device.execute(sequence_id)
 
