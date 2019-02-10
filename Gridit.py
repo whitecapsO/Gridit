@@ -56,12 +56,12 @@ for r in range(rows):
             try:
                 device.log(message='Find sequence by name: ' + sequenceBeforeMove, message_type='success')
                 sequence_id = app.find_sequence_by_name('name=' + sequenceBeforeMove)
+                device.log(message='Execute sequence: ' + sequenceBeforeMove, message_type='success')
+                device.execute(sequence_id)
                 pass
             except Exception as e:
                 device.log(message=e.message, message_type='success')
                 raise e
-            device.log(message='Execute sequence: ' + sequenceBeforeMove, message_type='success')
-            device.execute(sequence_id)
 
         # moveAbsolute(xPos, yPos, startZ)
         device.log('Moving to ' + str(xPos) + ', ' + str(yPos) + ', ' + str(zPos), 'success', ['toast'])
