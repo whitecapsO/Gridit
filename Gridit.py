@@ -1,4 +1,7 @@
-from farmware_tools import app, device, get_config_value
+from farmware_tools import app
+from farmware_tools import device
+from farmware_tools import env
+from farmware_tools import get_config_value
 
 # Values for testing
 # rows = 4
@@ -25,12 +28,12 @@ sequenceAfterMove = get_config_value(farmware_name='Gridit', config_name='sequen
 device.log(message='Setting sequenceId variables', message_type='success')
 if sequenceBeforeMove != "":
     sequenceBeforeMoveId = app.find_sequence_by_name(name=sequenceBeforeMove)
-else
+else :
     sequenceBeforeMoveId = 0
 
 if sequenceAfterMove != "":
     sequenceAfterMoveId = app.find_sequence_by_name(name=sequenceAfterMove)
-else
+else :
     sequenceAfterMoveId = 0
 
 # Start the grid movement
