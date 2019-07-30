@@ -2,7 +2,7 @@ from farmware_tools import app, device, get_config_value
 
 # Values for testing
 # rows = 4
-# cols = 7
+# cols = 7 
 # spaceBetweenRows = 47
 # spaceBetweenColumns = 45 
 # startX = 310.2
@@ -21,12 +21,21 @@ startY = get_config_value(farmware_name='Gridit', config_name='startY', value_ty
 startZ = get_config_value(farmware_name='Gridit', config_name='startZ', value_type=float)
 sequenceBeforeMove = get_config_value(farmware_name='Gridit', config_name='sequenceBeforeMove', value_type=str)
 sequenceAfterMove = get_config_value(farmware_name='Gridit', config_name='sequenceAfterMove', value_type=str)
+
 device.log(message='Setting sequenceId variables', message_type='success')
-sequenceBeforeMoveId = app.find_sequence_by_name(name=sequenceBeforeMove)
-sequenceAfterMoveId = app.find_sequence_by_name(name=sequenceAfterMove)
-device.log(message='Starting row loop', message_type='success')
+if sequenceBeforeMove != "":
+    sequenceBeforeMoveId = app.find_sequence_by_name(name=sequenceBeforeMove)
+else
+    sequenceBeforeMoveId = 0
+
+if sequenceAfterMove != "":
+    sequenceAfterMoveId = app.find_sequence_by_name(name=sequenceAfterMove)
+else
+    sequenceAfterMoveId = 0
 
 # Start the grid movement
+device.log(message='Starting row loop', message_type='success')
+
 for r in range(rows):
     # Initialise or increment x, z position
     xPos = startX + (spaceBetweenRows * r)
