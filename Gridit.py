@@ -3,6 +3,7 @@ from farmware_tools import device
 from farmware_tools import env
 from farmware_tools import get_config_value
 
+
 # Values for testing
 # rows = 4
 # cols = 7 
@@ -25,6 +26,16 @@ startZ = get_config_value(farmware_name='Gridit', config_name='startZ', value_ty
 sequenceBeforeMove = get_config_value(farmware_name='Gridit', config_name='sequenceBeforeMove', value_type=str)
 sequenceAfterMove = get_config_value(farmware_name='Gridit', config_name='sequenceAfterMove', value_type=str)
 
+device.log(message='rows' + str(rows), message_type='success')
+device.log(message='cols' + str(cols), message_type='success')
+device.log(message='spaceBetweenRows' + str(spaceBetweenRows), message_type='success')
+device.log(message='spaceBetweenCols' + str(spaceBetweenCols), message_type='success')
+device.log(message='startX' + str(startX), message_type='success')
+device.log(message='startY' + str(startY), message_type='success')
+device.log(message='startZ' + str(startZ), message_type='success')
+device.log(message='sequenceBeforeMove' + str(sequenceBeforeMove), message_type='success')
+device.log(message='sequenceAfterMove' + str(sequenceAfterMove), message_type='success')
+
 device.log(message='Setting sequenceId variables', message_type='success')
 if sequenceBeforeMove != "":
     sequenceBeforeMoveId = app.find_sequence_by_name(name=sequenceBeforeMove)
@@ -37,6 +48,8 @@ else :
     sequenceAfterMoveId = 0
 
 # Start the grid movement
+device.log(message='sequenceBeforeMoveId' + str(sequenceBeforeMoveId), message_type='success')
+device.log(message='sequenceAfterMoveId' + str(sequenceAfterMoveId), message_type='success')
 device.log(message='Starting row loop', message_type='success')
 
 for r in range(rows):
