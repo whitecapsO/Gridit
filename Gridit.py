@@ -26,15 +26,8 @@ startZ = get_config_value(farmware_name='Gridit', config_name='startZ', value_ty
 sequenceBeforeMove = get_config_value(farmware_name='Gridit', config_name='sequenceBeforeMove', value_type=str)
 sequenceAfterMove = get_config_value(farmware_name='Gridit', config_name='sequenceAfterMove', value_type=str)
 
-device.log(message='spaceBetweenRows' + str(spaceBetweenRows), message_type='success')
-device.log(message='spaceBetweenCols' + str(spaceBetweenCols), message_type='success')
-device.log(message='startX' + str(startX), message_type='success')
-device.log(message='startY' + str(startY), message_type='success')
-device.log(message='startZ' + str(startZ), message_type='success')
-device.log(message='sequenceBeforeMove' + str(sequenceBeforeMove), message_type='success')
-device.log(message='sequenceAfterMove' + str(sequenceAfterMove), message_type='success')
 
-device.log(message='Setting sequenceId variables', message_type='success')
+#device.log(message='Setting sequenceId variables', message_type='success')
 if sequenceBeforeMove != "":
     sequenceBeforeMoveId = app.find_sequence_by_name(name=sequenceBeforeMove)
 else :
