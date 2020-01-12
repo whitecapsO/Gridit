@@ -15,7 +15,7 @@ from farmware_tools import get_config_value
 # sequenceBeforeMove = 'PickUpSeed' 
 # sequenceAfterMove = 'PlantSeed'
 
-device.log(message='Setting variables', message_type='success')
+#device.log(message='Setting variables', message_type='success')
 rows = get_config_value(farmware_name='Gridit', config_name='rows', value_type=int)
 cols = get_config_value(farmware_name='Gridit', config_name='cols', value_type=int)
 spaceBetweenRows = get_config_value(farmware_name='Gridit', config_name='spaceBetweenRows', value_type=float)
@@ -39,9 +39,7 @@ else :
     sequenceAfterMoveId = 0
 
 # Start the grid movement
-device.log(message='sequenceBeforeMoveId' + str(sequenceBeforeMoveId), message_type='success')
-device.log(message='sequenceAfterMoveId' + str(sequenceAfterMoveId), message_type='success')
-device.log(message='Starting row loop', message_type='success')
+#device.log(message='Starting row loop', message_type='success')
 
 for r in range(rows):
     # Initialise or increment x, z position
