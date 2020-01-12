@@ -26,8 +26,6 @@ startZ = get_config_value(farmware_name='Gridit', config_name='startZ', value_ty
 sequenceBeforeMove = get_config_value(farmware_name='Gridit', config_name='sequenceBeforeMove', value_type=str)
 sequenceAfterMove = get_config_value(farmware_name='Gridit', config_name='sequenceAfterMove', value_type=str)
 
-device.log(message='rows' + str(rows), message_type='success')
-device.log(message='cols' + str(cols), message_type='success')
 device.log(message='spaceBetweenRows' + str(spaceBetweenRows), message_type='success')
 device.log(message='spaceBetweenCols' + str(spaceBetweenCols), message_type='success')
 device.log(message='startX' + str(startX), message_type='success')
