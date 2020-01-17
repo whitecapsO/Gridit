@@ -38,6 +38,30 @@ if sequenceAfterMove != "":
 else :
     sequenceAfterMoveId = 0
 
+# *** Start Test Move ***
+
+# Initialise or increment x, z position
+xPos = startX + (spaceBetweenRows * r)
+zPos = startZ
+
+ # Set y position back to the begining of the row
+yPos = startY
+
+# moveAbsolute(xPos, yPos, startZ)
+device.log('Moving to ' + str(xPos) + ', ' + str(yPos) + ', ' + str(zPos), 'success', ['toast'])
+device.move_absolute(
+    {
+        'kind': 'coordinate',
+        'args': {'x': xPos, 'y': yPos, 'z': zPos}
+    },
+    100,
+    {
+        'kind': 'coordinate',
+        'args': {'x': 0, 'y': 0, 'z': 0}
+    }
+)
+# *** End Test Move ***
+
 # Start the grid movement
 device.log(message='Starting row loop', message_type='success')
 
