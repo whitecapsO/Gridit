@@ -15,17 +15,6 @@ try:
     sequenceBeforeMove = get_config_value(farmware_name='Gridit', config_name='sequenceBeforeMove', value_type=str)
     sequenceAfterMove = get_config_value(farmware_name='Gridit', config_name='sequenceAfterMove', value_type=str)
 
-    device.log(message='Setting sequenceId variables', message_type='success')
-    if sequenceBeforeMove != "":
-        sequenceBeforeMoveId = app.find_sequence_by_name(name=sequenceBeforeMove)
-    else :
-        sequenceBeforeMoveId = 0
-
-    if sequenceAfterMove != "":
-        sequenceAfterMoveId = app.find_sequence_by_name(name=sequenceAfterMove)
-    else :
-        sequenceAfterMoveId = 0
-
     # *** Start Test Move ***
 
     # Initialise or increment x, z position
