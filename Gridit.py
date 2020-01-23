@@ -26,7 +26,6 @@ startZ = get_config_value(farmware_name='Gridit', config_name='startZ', value_ty
 sequenceBeforeMove = get_config_value(farmware_name='Gridit', config_name='sequenceBeforeMove', value_type=str)
 sequenceAfterMove = get_config_value(farmware_name='Gridit', config_name='sequenceAfterMove', value_type=str)
 
-
 device.log(message='Setting sequenceId variables', message_type='success')
 if sequenceBeforeMove != "":
     sequenceBeforeMoveId = app.find_sequence_by_name(name=sequenceBeforeMove)
@@ -42,14 +41,18 @@ else :
 device.log(message='Starting row loop', message_type='success')
 
 for r in range(rows):
+    device.log(message='Setting positions ' + str(r), message_type='success')
+    device.move_absolute(
+        device.assemble_coordinate(startX, startY, startZ),
+        100,
+        device.assemble_coordinate(0, 0, 0))
+
     # Initialise or increment x, z position
     xPos = startX + (spaceBetweenRows * r)
     zPos = startZ
 
     # Set y position back to the begining of the row
     yPos = startY
-
-    device.log(message='Set positions', message_type='success')
 
     for c in range(cols):
         # Run the before move sequence
