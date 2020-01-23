@@ -12,8 +12,6 @@ try:
     startX = get_config_value(farmware_name='Gridit', config_name='startX', value_type=float)
     startY = get_config_value(farmware_name='Gridit', config_name='startY', value_type=float)
     startZ = get_config_value(farmware_name='Gridit', config_name='startZ', value_type=float)
-    sequenceBeforeMove = get_config_value(farmware_name='Gridit', config_name='sequenceBeforeMove', value_type=str)
-    sequenceAfterMove = get_config_value(farmware_name='Gridit', config_name='sequenceAfterMove', value_type=str)
 
     # *** Start Test Move ***
 
