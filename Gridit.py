@@ -40,7 +40,7 @@ else :
 # Start the grid movement
 device.log(message='Starting row loop for ' + str(rows) + ' rows', message_type='success')
 
-for r in range(rows):
+for r in range(0, rows - 1): 
     device.log(message='Setting positions ' + str(r), message_type='success')
     device.move_absolute(
         device.assemble_coordinate(startX, startY, startZ),
