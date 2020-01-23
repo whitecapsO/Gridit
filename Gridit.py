@@ -38,8 +38,8 @@ else :
     sequenceAfterMoveId = 0
 
 # Start the grid movement
-device.log(message='Starting row loop for ' + str(rows) + ' rows', message_type='success')
-device.log(message='Test', message_type='success')
+#device.log(message='Starting row loop for ' + str(rows) + ' rows', message_type='success')
+#device.log(message='Test', message_type='success')
 
 for r in range(0, rows - 1):
     device.log(message='Loop # ' + str(r), message_type='success')
