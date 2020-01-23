@@ -29,7 +29,7 @@ try:
     # *** Start Test Move ***
 
     # Initialise or increment x, z position
-    xPos = startX + (spaceBetweenRows * r)
+    xPos = startX + (spaceBetweenRows)
     zPos = startZ
 
     # Set y position back to the begining of the row
