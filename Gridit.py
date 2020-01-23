@@ -39,46 +39,7 @@ else :
 
 # Start the grid movement
 device.log(message='Starting row loop for ' + str(rows) + ' rows', message_type='success')
+device.log(message='Test', message_type='success')
 
-for r in range(0, rows - 1): 
-    device.log(message='Setting positions ' + str(r), message_type='success')
-    device.move_absolute(
-        device.assemble_coordinate(startX, startY, startZ),
-        100,
-        device.assemble_coordinate(0, 0, 0))
-
-    # Initialise or increment x, z position
-    xPos = startX + (spaceBetweenRows * r)
-    zPos = startZ
-
-    # Set y position back to the begining of the row
-    yPos = startY
-
-    for c in range(cols):
-        # Run the before move sequence
-        if sequenceBeforeMove != "":
-            device.log(message='Execute sequence: ' + sequenceBeforeMove, message_type='success')
-            device.execute(sequenceBeforeMoveId)
-
-        # moveAbsolute(xPos, yPos, startZ)
-        device.log('Moving to ' + str(xPos) + ', ' + str(yPos) + ', ' + str(zPos), 'success', ['toast'])
-        device.move_absolute(
-            {
-                'kind': 'coordinate',
-                'args': {'x': xPos, 'y': yPos, 'z': zPos}
-            },
-            100,
-            {
-                'kind': 'coordinate',
-                'args': {'x': 0, 'y': 0, 'z': 0}
-            }
-        )
-
-        # Run after move sequence
-        if sequenceAfterMove != "":
-            # runSequence(sequenceAfterMove)
-            device.log(message='Execute sequence: ' + sequenceAfterMove, message_type='success')
-            device.execute(sequenceAfterMoveId)
-
-        # Increment y position
-        yPos = yPos + spaceBetweenCols
+for r in range(0, rows - 1):
+    device.log(message='Loop # ' + str(r), message_type='success')
